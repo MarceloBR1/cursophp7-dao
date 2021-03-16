@@ -62,6 +62,14 @@
 
         }
 
+        public static function getlist(){
+
+            $sql = new Sql();
+
+            return $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin");
+
+        }
+
         public function __toString(){
 
             return json_encode(array(

@@ -6,7 +6,7 @@
 
         public function __construct(){
 
-            $this->$conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "");
+            $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "");
 
         }
 
@@ -27,7 +27,7 @@
 
         }
 
-        public function query($rawQuery, $params = array()){
+        public function execQuery($rawQuery, $params = array()){
 
             $stmt = $this->conn->prepare($rawQuery);
 
@@ -42,7 +42,7 @@
         public function select($rawQuery, $params = array()):array
         {
 
-           $stmt = $this->query($rawQuery, $params);
+           $stmt = $this->execQuery($rawQuery, $params);
 
            return $stmt->fetchALL(PDO::FETCH_ASSOC);
 
